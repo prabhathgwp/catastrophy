@@ -43,6 +43,10 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4053455129940957" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Federant&display=swap" rel="stylesheet">
+  <script src="/js/theme.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans flex flex-col min-h-screen transition-colors duration-200">
 
@@ -53,7 +57,7 @@
         <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition transform">
           <i class="fa-solid fa-cat text-xl"></i>
         </div>
-        <span class="font-black tracking-wider">CATASTROPHY</span>
+        <span class="tracking-wider text-2xl font-bold" style="font-family: 'Federant', serif;">CATASTROPHY</span>
       </a>
       <div class="flex items-center gap-4 sm:gap-6">
         <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-slate-700 dark:text-slate-200">
@@ -64,7 +68,7 @@
         </nav>
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" type="button" aria-label="Toggle Dark / Light Mode" 
-          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center justify-center shadow-sm">
+          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center justify-center shadow-sm" onclick="window.catastrophyToggleTheme && window.catastrophyToggleTheme()">
           <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
           <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden text-amber-400"></i>
         </button>

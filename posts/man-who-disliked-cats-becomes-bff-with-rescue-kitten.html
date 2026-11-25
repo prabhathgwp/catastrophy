@@ -21,16 +21,32 @@
   <meta name="twitter:description" content="When a stranded traveler rescued a trembling kitten in the desert, he braced for the worst. Instead, he discovered a bond that would change his perspective on companionship forever.">
   <meta name="twitter:image" content="https://images.pexels.com/photos/33394285/pexels-photo-33394285.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    };
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google AdSense Placeholder (Uncomment when approved) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4053455129940957" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans flex flex-col min-h-screen transition-colors duration-200">
 
   <!-- Header -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
       <a href="/index.html" class="flex items-center gap-2 text-2xl font-black text-amber-600 tracking-tight">
         <i class="fa-solid fa-cat text-3xl"></i>
         <span>Catastrophy</span>
@@ -41,6 +57,11 @@
         <a href="/about.html" class="hover:text-amber-600 transition">About</a>
         <a href="/contact.html" class="hover:text-amber-600 transition">Contact</a>
       </nav>
+        <button id="theme-toggle" type="button" aria-label="Toggle Dark / Light Mode" 
+          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center justify-center shadow-sm">
+          <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden text-amber-400"></i>
+        </button>
     </div>
   </header>
 
@@ -53,7 +74,7 @@
 
   <!-- Article Container -->
   <main class="max-w-4xl mx-auto px-4 py-8 flex-grow">
-    <article class="bg-white p-6 sm:p-10 rounded-3xl border border-gray-200 shadow-sm">
+    <article class="bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
       
       <!-- Meta & Breadcrumb -->
       <div class="flex flex-wrap items-center justify-between text-xs text-gray-500 mb-4 gap-2">
@@ -69,7 +90,7 @@
       </div>
 
       <!-- Title -->
-      <h1 class="text-2xl sm:text-4xl font-black text-gray-900 leading-tight mb-6">
+      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white leading-tight">
         From Desert Survivor to BFF: How a Cat-Hating Man Found His Feline Soulmate
       </h1>
 
@@ -87,7 +108,7 @@
       </div>
 
       <!-- Main HTML Content -->
-      <div class="prose max-w-none text-gray-700 leading-relaxed text-base sm:text-lg space-y-6">
+      <div class="prose max-w-none text-slate-700 dark:text-slate-200 leading-relaxed text-base sm:text-lg space-y-6">
         <p>When Marcus decided to embark on a solo trek across the unforgiving desert, the last thing on his mind was a feline encounter. A self-proclaimed cat skeptic, he had spent years dismissing the "crazy cat lady" stereotype and viewed cats with suspicion. His philosophy was simple: dogs are loyal; cats are aloof. Little did he know that a chance encounter in the sands would dismantle years of prejudice and forge a bond stronger than any he had known before.</p>
 
 <h2>The Unexpected Encounter in the Sands</h2>
@@ -225,5 +246,49 @@
     loadPostShop();
   </script>
 
+<script>
+    function initTheme() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          darkIcon && darkIcon.classList.add('hidden');
+          lightIcon && lightIcon.classList.remove('hidden');
+        } else {
+          lightIcon && lightIcon.classList.add('hidden');
+          darkIcon && darkIcon.classList.remove('hidden');
+        }
+      }
+      updateIcons();
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+          updateIcons();
+        });
+      }
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+            updateIcons();
+          }
+        });
+      }
+    }
+    initTheme();
+</script>
 </body>
 </html>

@@ -10,228 +10,525 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://catastrophy.protechsystems.lk/">
   <meta property="og:image" content="https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1200">
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            catAmber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <!-- Pre-render theme check to prevent flash on mobile & desktop -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google AdSense Placeholder (Uncomment when approved) -->
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4053455129940957" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans flex flex-col min-h-screen transition-colors duration-200">
 
   <!-- Header -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/index.html" class="flex items-center gap-2 text-2xl font-black text-amber-600 tracking-tight">
-        <i class="fa-solid fa-cat text-3xl"></i>
+  <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/index.html" class="flex items-center gap-2.5 text-2xl font-black text-amber-600 dark:text-amber-500 tracking-tight group">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition transform">
+          <i class="fa-solid fa-cat text-xl"></i>
+        </div>
         <span>Catastrophy</span>
       </a>
-      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
-        <a href="/index.html" class="text-amber-600 font-bold">Home</a>
-        <a href="/shop.html" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-solid fa-store text-amber-500"></i> Cat Shop</a>
-        <a href="/about.html" class="hover:text-amber-600 transition">About</a>
-        <a href="/contact.html" class="hover:text-amber-600 transition">Contact</a>
-      </nav>
+
+      <!-- Navigation & Controls -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-slate-700 dark:text-slate-200">
+          <a href="/index.html" class="text-amber-600 dark:text-amber-400 font-bold">Home</a>
+          <a href="/shop.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-store text-amber-500 text-xs"></i> Cat Shop
+          </a>
+          <a href="/about.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">About</a>
+          <a href="/contact.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Contact</a>
+        </nav>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" type="button" aria-label="Toggle Dark / Light Mode" 
+          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center justify-center shadow-sm">
+          <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden text-amber-400"></i>
+        </button>
+
+        <!-- Mobile Menu Quick Button -->
+        <a href="/shop.html" class="sm:hidden text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-white flex items-center gap-1 shadow-sm">
+          <i class="fa-solid fa-store text-[10px]"></i> Shop
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- AdSense Top Banner Slot -->
-  <div class="max-w-6xl mx-auto px-4 mt-6">
-    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-4 px-4 text-center text-xs text-gray-400 font-medium">
-      <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (Google AdSense Responsive Unit)
+  <!-- Top AdSense Banner (Desktop & Mobile) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div class="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl py-3 px-4 text-center text-xs text-slate-400 dark:text-slate-500 font-medium">
+      <i class="fa-solid fa-rectangle-ad mr-1.5"></i> Advertisement Area (Google AdSense Responsive Unit)
     </div>
   </div>
 
-  <!-- Hero Section: Featured Story -->
-  <section class="max-w-6xl mx-auto px-4 py-8">
-    <div class="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-gray-900 text-white min-h-[420px] flex items-end" id="hero-story">
-      <img src="https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Feline Hydration" class="absolute inset-0 w-full h-full object-cover opacity-60">
-      <div class="relative z-10 p-6 md:p-12 max-w-3xl space-y-4">
-        <span class="inline-block px-3 py-1 bg-amber-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">Featured Story</span>
-        <h1 class="text-2xl md:text-4xl font-extrabold leading-tight text-white drop-shadow-sm">
-          Understanding Feline Hydration: Why Cats Prefer Running Water and How to Protect Their Kidneys
-        </h1>
-        <p class="text-gray-200 text-sm md:text-base line-clamp-2 leading-relaxed">
-          Many domestic cats suffer from chronic dehydration without their owners realizing it. Discover why running water activates your cat's natural instincts and simple steps to keep them hydrated.
-        </p>
-        <div class="pt-2 flex items-center gap-4">
-          <a href="/posts/understanding-feline-hydration-why-cats-need-running-water.html" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition duration-200 shadow-md">
-            Read Full Article <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <span class="text-xs text-gray-300"><i class="fa-regular fa-clock mr-1"></i> 4 min read</span>
+  <!-- Hero Magazine Section (Fills Left & Right on Desktop) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- Left Column: Featured Hero Banner (8 cols) -->
+      <div class="lg:col-span-8 flex">
+        <div class="relative w-full rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 bg-slate-900 text-white min-h-[380px] sm:min-h-[460px] flex items-end group" id="hero-story-container">
+          <!-- Featured Image -->
+          <img id="hero-img" src="https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Featured Story" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          
+          <!-- Content Overlay -->
+          <div class="relative z-10 p-6 sm:p-10 max-w-3xl space-y-3.5">
+            <div class="flex items-center gap-3">
+              <span class="inline-block px-3 py-1 bg-amber-500 text-white text-xs font-black rounded-full uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-star text-[10px] mr-1"></i> Featured Story
+              </span>
+              <span id="hero-date" class="text-xs text-slate-300 font-medium">Updated Today</span>
+            </div>
+
+            <h1 id="hero-title" class="text-2xl sm:text-4xl font-black leading-tight text-white drop-shadow">
+              Understanding Feline Hydration: Why Cats Need Running Water
+            </h1>
+
+            <p id="hero-excerpt" class="text-slate-200 text-sm sm:text-base line-clamp-2 leading-relaxed">
+              Many domestic cats suffer from chronic dehydration without their owners realizing it. Discover why running water activates your cat's natural instincts.
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <a id="hero-link" href="/posts/understanding-feline-hydration-why-cats-need-running-water.html" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-2xl transition duration-200 shadow-lg shadow-amber-500/25">
+                Read Full Story <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+              <span id="hero-time" class="text-xs text-slate-300 font-semibold"><i class="fa-regular fa-clock mr-1"></i> 4 min read</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Right Column: Trending Top Reads Widget (4 cols - Fills Right Side!) -->
+      <div class="lg:col-span-4 flex flex-col justify-between space-y-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+          <h2 class="text-base font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-fire text-amber-500"></i> Trending Today
+          </h2>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-400">Top Reads</span>
+        </div>
+
+        <!-- Trending Items List -->
+        <div class="space-y-4 flex-grow flex flex-col justify-around" id="trending-list">
+          <!-- Populated dynamically via JS -->
+          <div class="animate-pulse space-y-3">
+            <div class="h-14 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
+            <div class="h-14 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
+            <div class="h-14 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
+          </div>
+        </div>
+
+        <!-- Quick Cat Shop Pill -->
+        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 dark:text-slate-400">Need cat gear?</span>
+          <a href="/shop.html" class="font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
+            Browse eBay Shop <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Categories Strip -->
-  <section class="max-w-6xl mx-auto px-4 py-4">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-      <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:border-amber-400 transition cursor-pointer">
-        <i class="fa-solid fa-heart-pulse text-2xl text-amber-500 mb-1"></i>
-        <h3 class="font-bold text-sm text-gray-800">Cat Care & Health</h3>
-      </div>
-      <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:border-amber-400 transition cursor-pointer">
-        <i class="fa-solid fa-shield-cat text-2xl text-amber-500 mb-1"></i>
-        <h3 class="font-bold text-sm text-gray-800">Feline Behavior</h3>
-      </div>
-      <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:border-amber-400 transition cursor-pointer">
-        <i class="fa-solid fa-bowl-food text-2xl text-amber-500 mb-1"></i>
-        <h3 class="font-bold text-sm text-gray-800">Diet & Nutrition</h3>
-      </div>
-      <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:border-amber-400 transition cursor-pointer">
-        <i class="fa-solid fa-gift text-2xl text-amber-500 mb-1"></i>
-        <h3 class="font-bold text-sm text-gray-800">Gear & Toys</h3>
-      </div>
+  <!-- Category Pills Strip -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none text-xs font-bold">
+      <span class="text-slate-400 dark:text-slate-500 uppercase tracking-wider shrink-0 mr-1">Topics:</span>
+      <a href="/index.html" class="px-4 py-2 rounded-2xl bg-amber-500 text-white shrink-0 shadow-sm shadow-amber-500/20">All Topics</a>
+      <a href="#articles-section" class="px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-amber-400 dark:hover:border-amber-500 transition shrink-0 flex items-center gap-1.5">
+        <i class="fa-solid fa-heart-pulse text-amber-500"></i> Health & Wellness
+      </a>
+      <a href="#articles-section" class="px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-amber-400 dark:hover:border-amber-500 transition shrink-0 flex items-center gap-1.5">
+        <i class="fa-solid fa-shield-cat text-amber-500"></i> Feline Behavior
+      </a>
+      <a href="#articles-section" class="px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-amber-400 dark:hover:border-amber-500 transition shrink-0 flex items-center gap-1.5">
+        <i class="fa-solid fa-bowl-food text-amber-500"></i> Diet & Nutrition
+      </a>
+      <a href="/shop.html" class="px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-amber-400 dark:hover:border-amber-500 transition shrink-0 flex items-center gap-1.5">
+        <i class="fa-solid fa-store text-amber-500"></i> eBay Cat Gear
+      </a>
     </div>
   </section>
 
-  <!-- Latest Articles Section -->
-  <main class="max-w-6xl mx-auto px-4 py-10">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">Latest Stories & Guides</h2>
-        <p class="text-sm text-gray-500 mt-1">Fresh feline news, care tutorials, and behavior breakthroughs</p>
-      </div>
-    </div>
+  <!-- Main 2-Column Section (Fills Left & Right on Desktop) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow" id="articles-section">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-    <!-- Articles Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
-      <!-- Loaded dynamically via posts/posts.json -->
+      <!-- Left Column: Articles Grid (8 cols) -->
+      <div class="lg:col-span-8 space-y-8">
+        
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">Latest Stories & Guides</h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Daily veterinarian-reviewed advice, feline psychology, and heartwarming rescues</p>
+          </div>
+          <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold" id="post-count-badge">
+            Articles
+          </span>
+        </div>
+
+        <!-- Articles Grid (2 cols on tablet/desktop) -->
+        <div class="grid sm:grid-cols-2 gap-6" id="articles-grid">
+          <!-- Populated dynamically via posts.json -->
+          <div class="animate-pulse bg-white dark:bg-slate-900 h-80 rounded-3xl border border-slate-200 dark:border-slate-800"></div>
+          <div class="animate-pulse bg-white dark:bg-slate-900 h-80 rounded-3xl border border-slate-200 dark:border-slate-800"></div>
+        </div>
+
+        <!-- In-Feed AdSense Banner -->
+        <div class="my-6">
+          <div class="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl py-6 px-4 text-center text-xs text-slate-400 dark:text-slate-500 font-medium">
+            <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (In-Feed AdSense Responsive Unit)
+          </div>
+        </div>
+
+        <!-- Interactive Cat Parent Trivia & Q&A Box -->
+        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/5 dark:from-slate-900 dark:to-slate-900/60 rounded-3xl p-6 sm:p-8 border border-amber-500/20 dark:border-slate-800 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-black">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Did You Know? Feline Whiskers Trivia</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Whiskers are deeply rooted touch receptors that detect air currents and determine if a cat can fit into spaces!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Sidebar Widgets (4 cols - Fills Right Margin!) -->
+      <aside class="lg:col-span-4 space-y-6">
+
+        <!-- Sidebar Widget 1: Curated eBay Store Spotlight -->
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-bag-shopping text-amber-500"></i> Featured eBay Gear
+            </h3>
+            <a href="/shop.html" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline">View All</a>
+          </div>
+
+          <div class="space-y-3" id="sidebar-products">
+            <!-- Loaded dynamically from data/products.json -->
+            <div class="animate-pulse h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl"></div>
+            <div class="animate-pulse h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl"></div>
+          </div>
+        </div>
+
+        <!-- Sidebar Widget 2: Daily Cat Care Tip -->
+        <div class="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-900 dark:to-amber-950/20 p-6 rounded-3xl border border-amber-200/80 dark:border-slate-800 space-y-3 shadow-sm">
+          <div class="flex items-center gap-2.5 text-amber-800 dark:text-amber-400 text-xs font-black uppercase tracking-wider">
+            <i class="fa-solid fa-paw"></i> Daily Wellness Tip
+          </div>
+          <h4 class="text-sm font-extrabold text-slate-900 dark:text-white">Separate Food and Water Bowls</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            In the wild, cats avoid drinking near their food because food can contaminate water. Moving your cat’s water bowl 3-5 feet away from their food bowl can boost their water intake by up to 30%!
+          </p>
+        </div>
+
+        <!-- Sidebar Widget 3: Sticky High-RPM AdSense Skyscraper -->
+        <div class="sticky top-20 space-y-6">
+          <div class="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-center text-xs text-slate-400 dark:text-slate-500 font-medium min-h-[300px] flex flex-col items-center justify-center">
+            <i class="fa-solid fa-rectangle-ad text-2xl mb-2 text-slate-300 dark:text-slate-600"></i>
+            <span>Advertisement Area</span>
+            <span class="text-[10px] text-slate-400 mt-1">High-Impact Sticky Unit (300x250 / 300x600)</span>
+          </div>
+
+          <!-- VIP Cat Club Newsletter Box -->
+          <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <h4 class="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-amber-500"></i> Join 15,000+ Cat Parents
+            </h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Get our top feline wellness guides, nutrition alerts, and exclusive eBay cat coupons delivered weekly.
+            </p>
+            <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Catastrophy!'); this.reset();" class="space-y-2">
+              <input type="email" placeholder="Your email address" required 
+                class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition shadow-md shadow-amber-500/20">
+                Subscribe Free
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </aside>
+
     </div>
   </main>
 
-  <!-- Mid-Page AdSense Slot -->
-  <div class="max-w-6xl mx-auto px-4 my-6">
-    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-6 px-4 text-center text-xs text-gray-400 font-medium">
-      <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (Google AdSense Responsive Unit)
-    </div>
-  </div>
-
-  <!-- Featured eBay Shop Section -->
-  <section class="bg-gradient-to-br from-amber-50 to-orange-50 border-y border-amber-200 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+  <!-- Full-Width eBay Shop Featured Showcase -->
+  <section class="bg-gradient-to-br from-amber-500/5 via-orange-500/5 to-transparent dark:from-slate-900/40 dark:to-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
         <div>
-          <span class="inline-block px-3 py-1 bg-amber-200 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
-            <i class="fa-solid fa-bag-shopping mr-1"></i> Official eBay Selection
+          <span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 text-xs font-black rounded-full uppercase tracking-wider mb-2">
+            <i class="fa-solid fa-store text-[10px] mr-1"></i> Verified Gear
           </span>
-          <h2 class="text-3xl font-black text-gray-900 tracking-tight">Featured Cat Gear from Our eBay Store</h2>
-          <p class="text-gray-600 text-sm mt-1 max-w-xl">
-            Upgrade your cat's comfort and playtime with vetted gear fulfilled safely through our eBay shop.
-          </p>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">Hand-Picked Feline Essentials</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Every item is chosen for feline safety, durability, and enrichment on eBay</p>
         </div>
-        <a href="/shop.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-sm font-bold rounded-xl transition shadow-sm self-start md:self-auto">
-          Explore All Products <i class="fa-solid fa-arrow-right"></i>
+        <a href="/shop.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-2xl transition shadow-md shadow-amber-500/20 self-start sm:self-auto">
+          Explore Cat Shop <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </a>
       </div>
 
-      <div class="grid sm:grid-cols-3 gap-6" id="featured-products">
-        <!-- Populated via script from data/products.json -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="bottom-shop-products">
+        <!-- Dynamically loaded from data/products.json -->
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-12 mt-auto border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid sm:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gray-800">
-        <div>
-          <a href="/index.html" class="flex items-center gap-2 text-2xl font-black text-amber-500 mb-3">
-            <i class="fa-solid fa-cat text-3xl"></i>
+  <footer class="bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 py-12 border-t border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-100 dark:border-slate-800">
+        <div class="md:col-span-2">
+          <a href="/index.html" class="flex items-center gap-2.5 text-2xl font-black text-amber-600 dark:text-amber-500 mb-3">
+            <div class="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center">
+              <i class="fa-solid fa-cat text-sm"></i>
+            </div>
             <span>Catastrophy</span>
           </a>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Your trusted source for cat parenting advice, health insights, and feline enrichment. Dedicated to giving every cat the purr-fect life.
+          <p class="text-xs leading-relaxed max-w-sm text-slate-500 dark:text-slate-400">
+            Dedicated to cat health, feline behavior breakthroughs, and trustworthy gear. Giving every indoor and outdoor cat the purr-fect life.
           </p>
         </div>
         <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Quick Links</h4>
-          <ul class="text-xs space-y-2">
-            <li><a href="/index.html" class="hover:text-amber-400 transition">Latest Articles</a></li>
-            <li><a href="/shop.html" class="hover:text-amber-400 transition">eBay Cat Shop</a></li>
-            <li><a href="/about.html" class="hover:text-amber-400 transition">About Our Mission</a></li>
-            <li><a href="/contact.html" class="hover:text-amber-400 transition">Contact Editorial Team</a></li>
+          <h4 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-3">Sections</h4>
+          <ul class="text-xs space-y-2 font-medium">
+            <li><a href="/index.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Latest Guides</a></li>
+            <li><a href="/shop.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">eBay Cat Store</a></li>
+            <li><a href="/about.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">About Our Mission</a></li>
+            <li><a href="/contact.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Contact Editors</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Compliance & Legal</h4>
-          <ul class="text-xs space-y-2">
-            <li><a href="/privacy-policy.html" class="hover:text-amber-400 transition">Privacy Policy (GDPR/CCPA)</a></li>
-            <li><a href="/terms.html" class="hover:text-amber-400 transition">Terms of Service</a></li>
-            <li><a href="/disclaimer.html" class="hover:text-amber-400 transition">FTC Affiliate & Ad Disclosure</a></li>
-            <li><span class="text-gray-500">Domain: catastrophy.protechsystems.lk</span></li>
+          <h4 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-3">Legal & Transparency</h4>
+          <ul class="text-xs space-y-2 font-medium">
+            <li><a href="/privacy-policy.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Privacy Policy</a></li>
+            <li><a href="/terms.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Terms of Service</a></li>
+            <li><a href="/disclaimer.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">FTC Affiliate & Ad Disclosure</a></li>
+            <li><span class="text-slate-400 dark:text-slate-600">catastrophy.protechsystems.lk</span></li>
           </ul>
         </div>
       </div>
-      <div class="text-center text-xs text-gray-500">
-        <p>© 2026 Catastrophy (protechsystems.lk). All rights reserved. Advertisements provided via Google AdSense. Affiliate links powered by eBay Partner Network.</p>
+      <div class="text-center text-xs text-slate-400 dark:text-slate-600">
+        <p>© 2026 Catastrophy (protechsystems.lk). All rights reserved. Advertisements provided via Google AdSense.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts to load articles and shop preview -->
+  <!-- Theme Toggle & Dynamic Content Script -->
   <script>
-    async function loadArticles() {
+    // Theme Switcher & Auto Mobile Theme Listener
+    function initTheme() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          darkIcon.classList.add('hidden');
+          lightIcon.classList.remove('hidden');
+        } else {
+          lightIcon.classList.add('hidden');
+          darkIcon.classList.remove('hidden');
+        }
+      }
+
+      updateIcons();
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+          updateIcons();
+        });
+      }
+
+      // Automatically respond to Mobile Phone System Theme changes in real time
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+            updateIcons();
+          }
+        });
+      }
+    }
+
+    // Load Articles and Populate Hero, Trending, and Main Grid
+    async function loadContent() {
       try {
         const res = await fetch('/posts/posts.json');
         const posts = await res.json();
+        
+        if (!posts || !posts.length) return;
+
+        // 1. Update Hero Story with the top featured post
+        const featured = posts[0];
+        document.getElementById('hero-title').textContent = featured.title;
+        document.getElementById('hero-excerpt').textContent = featured.excerpt;
+        document.getElementById('hero-link').href = `/posts/${featured.slug}.html`;
+        document.getElementById('hero-img').src = featured.image;
+        document.getElementById('hero-img').alt = featured.title;
+        document.getElementById('hero-time').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> ${featured.reading_time || 4} min read`;
+        document.getElementById('hero-date').textContent = featured.date || 'Today';
+
+        // 2. Populate Trending Today Widget (items 1 to 4)
+        const trendingList = document.getElementById('trending-list');
+        const trendingItems = posts.slice(1, 5);
+        if (trendingItems.length) {
+          trendingList.innerHTML = trendingItems.map((p, idx) => `
+            <a href="/posts/${p.slug}.html" class="flex items-center gap-3.5 p-2 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/60 transition group">
+              <span class="w-7 h-7 rounded-xl bg-amber-500/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-black text-xs shrink-0">
+                #${idx + 1}
+              </span>
+              <img src="${p.image}" alt="${p.title}" class="w-14 h-14 object-cover rounded-xl shrink-0 group-hover:scale-105 transition">
+              <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-0.5">${p.category || 'Cat Care'}</span>
+                <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition line-clamp-2 leading-snug">
+                  ${p.title}
+                </h4>
+              </div>
+            </a>
+          `).join('');
+        }
+
+        // 3. Populate Main Articles Grid
         const grid = document.getElementById('articles-grid');
         grid.innerHTML = posts.map(p => `
-          <article class="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition duration-200 flex flex-col group">
-            <a href="/posts/${p.slug}.html" class="block h-48 overflow-hidden bg-gray-100">
-              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <article class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-xl dark:hover:shadow-slate-900/50 transition duration-300 flex flex-col group">
+            <a href="/posts/${p.slug}.html" class="block h-52 overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-amber-600 dark:text-amber-400 font-extrabold text-[11px] rounded-full uppercase tracking-wider shadow-sm">
+                ${p.category || 'Care'}
+              </span>
             </a>
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
-                <span class="font-bold text-amber-600 uppercase tracking-wider">${p.category}</span>
-                <span><i class="fa-regular fa-clock mr-1"></i>${p.reading_time} min</span>
+            <div class="p-6 flex flex-col flex-grow space-y-3">
+              <div class="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
+                <span><i class="fa-regular fa-calendar mr-1"></i> ${p.date || 'Recent'}</span>
+                <span><i class="fa-regular fa-clock mr-1"></i> ${p.reading_time || 4} min read</span>
               </div>
-              <h3 class="font-extrabold text-gray-900 text-lg leading-snug mb-3 group-hover:text-amber-600 transition">
+              <h3 class="font-black text-slate-900 dark:text-white text-base sm:text-lg leading-snug group-hover:text-amber-600 dark:group-hover:text-amber-400 transition line-clamp-2">
                 <a href="/posts/${p.slug}.html">${p.title}</a>
               </h3>
-              <p class="text-xs text-gray-500 line-clamp-3 leading-relaxed mb-4 flex-grow">${p.excerpt}</p>
-              <div class="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
-                <span class="text-xs text-gray-400">${p.date}</span>
-                <a href="/posts/${p.slug}.html" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">
-                  Read Guide <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed flex-grow">
+                ${p.excerpt}
+              </p>
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-auto">
+                <a href="/posts/${p.slug}.html" class="text-xs font-black text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center gap-1.5 group-hover:translate-x-1 transition duration-200">
+                  Read Full Guide <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
               </div>
             </div>
           </article>
         `).join('');
+
+        document.getElementById('post-count-badge').textContent = `${posts.length} Guides Available`;
+
       } catch (e) {
         console.error('Error loading articles:', e);
       }
     }
 
-    async function loadFeaturedProducts() {
+    // Load Products for Sidebar and Bottom Showcase
+    async function loadShop() {
       try {
         const res = await fetch('/data/products.json');
         const products = await res.json();
-        const feat = products.slice(0, 3);
-        const grid = document.getElementById('featured-products');
-        grid.innerHTML = feat.map(p => `
-          <div class="bg-white rounded-2xl p-5 border border-amber-200 shadow-sm flex flex-col hover:shadow-md transition">
-            <div class="h-44 rounded-xl overflow-hidden mb-4 bg-gray-50">
-              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+        if (!products || !products.length) return;
+
+        // Sidebar 2 items
+        const sidebar = document.getElementById('sidebar-products');
+        if (sidebar) {
+          sidebar.innerHTML = products.slice(0, 2).map(p => `
+            <div class="flex items-center gap-3 p-2.5 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
+              <img src="${p.image}" alt="${p.title}" class="w-14 h-14 object-cover rounded-xl shrink-0">
+              <div class="min-w-0 flex-grow">
+                <h5 class="text-xs font-bold text-slate-900 dark:text-white truncate">${p.title}</h5>
+                <span class="text-xs font-black text-amber-600 dark:text-amber-400 block">${p.price}</span>
+                <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="text-[10px] font-bold text-slate-500 dark:text-slate-400 hover:text-amber-600 underline">
+                  Buy on eBay &rarr;
+                </a>
+              </div>
             </div>
-            <span class="text-xs font-semibold text-amber-600 uppercase tracking-wider">${p.category}</span>
-            <h4 class="font-bold text-gray-900 text-sm my-1 line-clamp-1">${p.title}</h4>
-            <p class="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">${p.description}</p>
-            <div class="mt-auto pt-3 border-t border-gray-100 flex items-center justify-between">
-              <span class="text-base font-black text-gray-900">${p.price}</span>
-              <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-lg transition">
-                Buy on eBay
-              </a>
+          `).join('');
+        }
+
+        // Bottom showcase 4 items
+        const bottom = document.getElementById('bottom-shop-products');
+        if (bottom) {
+          bottom.innerHTML = products.slice(0, 4).map(p => `
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col hover:shadow-lg transition">
+              <div class="h-44 rounded-2xl overflow-hidden mb-3 bg-slate-100 dark:bg-slate-800">
+                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+              </div>
+              <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">${p.category}</span>
+              <h4 class="font-bold text-slate-900 dark:text-white text-xs my-1 line-clamp-1">${p.title}</h4>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 mb-3 leading-relaxed">${p.description}</p>
+              <div class="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <span class="text-sm font-black text-slate-900 dark:text-white">${p.price}</span>
+                <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-[11px] font-bold rounded-xl transition shadow-sm">
+                  Buy on eBay
+                </a>
+              </div>
             </div>
-          </div>
-        `).join('');
+          `).join('');
+        }
       } catch (e) {
-        console.error('Error loading featured products:', e);
+        console.error('Error loading shop products:', e);
       }
     }
 
-    loadArticles();
-    loadFeaturedProducts();
+    initTheme();
+    loadContent();
+    loadShop();
   </script>
 
 </body>

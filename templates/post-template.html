@@ -22,45 +22,72 @@
   <meta name="twitter:image" content="{{HERO_IMAGE}}">
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    };
+  </script>
+  <!-- Pre-render theme check to prevent flash on mobile & desktop -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google AdSense Placeholder (Uncomment when approved) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4053455129940957" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans flex flex-col min-h-screen transition-colors duration-200">
 
   <!-- Header -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/index.html" class="flex items-center gap-2 text-2xl font-black text-amber-600 tracking-tight">
-        <i class="fa-solid fa-cat text-3xl"></i>
+  <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2.5 text-2xl font-black text-amber-600 dark:text-amber-500 tracking-tight group">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition transform">
+          <i class="fa-solid fa-cat text-xl"></i>
+        </div>
         <span>Catastrophy</span>
       </a>
-      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
-        <a href="/index.html" class="hover:text-amber-600 transition">Home</a>
-        <a href="/shop.html" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-solid fa-store text-amber-500"></i> Cat Shop</a>
-        <a href="/about.html" class="hover:text-amber-600 transition">About</a>
-        <a href="/contact.html" class="hover:text-amber-600 transition">Contact</a>
-      </nav>
+      <div class="flex items-center gap-4 sm:gap-6">
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-slate-700 dark:text-slate-200">
+          <a href="/index.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Home</a>
+          <a href="/shop.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center gap-1.5"><i class="fa-solid fa-store text-amber-500 text-xs"></i> Cat Shop</a>
+          <a href="/about.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">About</a>
+          <a href="/contact.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Contact</a>
+        </nav>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" type="button" aria-label="Toggle Dark / Light Mode" 
+          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition flex items-center justify-center shadow-sm">
+          <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden text-amber-400"></i>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- AdSense Top Banner Slot -->
-  <div class="max-w-4xl mx-auto px-4 mt-6">
-    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-4 px-4 text-center text-xs text-gray-400 font-medium">
-      <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (Google AdSense Responsive Unit)
+  <!-- Top AdSense Banner -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div class="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl py-3 px-4 text-center text-xs text-slate-400 dark:text-slate-500 font-medium">
+      <i class="fa-solid fa-rectangle-ad mr-1.5"></i> Advertisement Area (Google AdSense Responsive Unit)
     </div>
   </div>
 
   <!-- Article Container -->
-  <main class="max-w-4xl mx-auto px-4 py-8 flex-grow">
-    <article class="bg-white p-6 sm:p-10 rounded-3xl border border-gray-200 shadow-sm">
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 flex-grow">
+    <article class="bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
       
       <!-- Meta & Breadcrumb -->
-      <div class="flex flex-wrap items-center justify-between text-xs text-gray-500 mb-4 gap-2">
+      <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2 gap-2">
         <div class="flex items-center gap-2">
-          <a href="/index.html" class="hover:underline text-gray-400">Home</a>
+          <a href="/index.html" class="hover:underline text-slate-400">Home</a>
           <span>/</span>
-          <span class="text-amber-600 font-bold uppercase tracking-wider">{{CATEGORY}}</span>
+          <span class="text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">{{CATEGORY}}</span>
         </div>
         <div class="flex items-center gap-4">
           <span><i class="fa-regular fa-calendar mr-1"></i> {{DATE}}</span>
@@ -69,25 +96,25 @@
       </div>
 
       <!-- Title -->
-      <h1 class="text-2xl sm:text-4xl font-black text-gray-900 leading-tight mb-6">
+      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white leading-tight">
         {{TITLE}}
       </h1>
 
       <!-- Hero Image -->
-      <div class="rounded-2xl overflow-hidden mb-8 shadow-sm">
-        <img src="{{HERO_IMAGE}}" alt="{{TITLE}}" class="w-full max-h-[460px] object-cover">
+      <div class="rounded-3xl overflow-hidden shadow-sm">
+        <img src="{{HERO_IMAGE}}" alt="{{TITLE}}" class="w-full max-h-[480px] object-cover">
         {{HERO_ATTRIBUTION}}
       </div>
 
       <!-- In-Article AdSense Banner Slot -->
       <div class="my-6">
-        <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-4 px-4 text-center text-xs text-gray-400 font-medium">
+        <div class="bg-slate-50 dark:bg-slate-800/60 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl py-4 px-4 text-center text-xs text-slate-400 dark:text-slate-500 font-medium">
           <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (In-Article AdSense Unit)
         </div>
       </div>
 
       <!-- Main HTML Content -->
-      <div class="prose max-w-none text-gray-700 leading-relaxed text-base sm:text-lg space-y-6">
+      <div class="prose max-w-none text-slate-700 dark:text-slate-200 leading-relaxed text-base sm:text-lg space-y-6">
         {{CONTENT_HTML}}
       </div>
 
@@ -95,14 +122,14 @@
       {{SOURCES_SECTION}}
 
       <!-- Social Share Strip -->
-      <div class="border-t border-gray-100 pt-6 mt-8 flex flex-wrap items-center justify-between gap-4">
+      <div class="border-t border-slate-100 dark:border-slate-800 pt-6 mt-8 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Share Story:</span>
+          <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Share:</span>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://catastrophy.protechsystems.lk/posts/{{SLUG}}.html" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-90 transition text-xs"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="https://twitter.com/intent/tweet?text={{TITLE}}&url=https://catastrophy.protechsystems.lk/posts/{{SLUG}}.html" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center hover:opacity-90 transition text-xs"><i class="fa-brands fa-twitter"></i></a>
           <a href="https://api.whatsapp.com/send?text={{TITLE}}%20https://catastrophy.protechsystems.lk/posts/{{SLUG}}.html" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center hover:opacity-90 transition text-xs"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
-        <a href="/shop.html" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">
+        <a href="/shop.html" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center gap-1">
           Visit Cat Shop <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
@@ -110,15 +137,15 @@
     </article>
 
     <!-- Contextual eBay Cat Shop Promotion Block -->
-    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-6 sm:p-8 border border-amber-200 mt-10">
+    <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/5 dark:from-slate-900 dark:to-slate-900/60 rounded-3xl p-6 sm:p-8 border border-amber-500/20 dark:border-slate-800 mt-10">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
         <div>
-          <span class="inline-block px-3 py-1 bg-amber-200 text-amber-800 text-[11px] font-bold rounded-full uppercase tracking-wider mb-1">
+          <span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 text-[11px] font-bold rounded-full uppercase tracking-wider mb-1">
             <i class="fa-solid fa-paw mr-1"></i> Featured Cat Essentials
           </span>
-          <h3 class="text-xl font-extrabold text-gray-900">Recommended Gear from Our eBay Store</h3>
+          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Recommended Gear from Our eBay Store</h3>
         </div>
-        <a href="/shop.html" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">
+        <a href="/shop.html" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center gap-1">
           View All Gear <i class="fa-solid fa-chevron-right text-[10px]"></i>
         </a>
       </div>
@@ -127,36 +154,75 @@
         <!-- Dynamically loaded from /data/products.json -->
       </div>
     </div>
-
-    <!-- AdSense Bottom Banner Slot -->
-    <div class="my-8">
-      <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-6 px-4 text-center text-xs text-gray-400 font-medium">
-        <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (Google AdSense Responsive Unit)
-      </div>
-    </div>
-
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-10 mt-auto border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
+  <footer class="bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 py-10 mt-auto border-t border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
       <div>
-        <p class="text-white font-bold text-lg flex items-center justify-center sm:justify-start gap-2">
+        <p class="text-slate-900 dark:text-white font-bold text-base flex items-center justify-center sm:justify-start gap-2">
           <i class="fa-solid fa-cat text-amber-500"></i> Catastrophy
         </p>
-        <p class="text-xs text-gray-500 mt-1">© 2026 Catastrophy (protechsystems.lk). All rights reserved.</p>
+        <p class="text-xs text-slate-400 dark:text-slate-600 mt-1">© 2026 Catastrophy (protechsystems.lk). All rights reserved.</p>
       </div>
-      <div class="flex flex-wrap gap-4 text-xs">
-        <a href="/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-        <a href="/terms.html" class="hover:text-white transition">Terms of Service</a>
-        <a href="/disclaimer.html" class="hover:text-white transition">Affiliate Disclosure</a>
-        <a href="/about.html" class="hover:text-white transition">About Us</a>
-        <a href="/contact.html" class="hover:text-white transition">Contact</a>
+      <div class="flex flex-wrap gap-4 text-xs font-medium">
+        <a href="/privacy-policy.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Privacy Policy</a>
+        <a href="/terms.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Terms of Service</a>
+        <a href="/disclaimer.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Affiliate Disclosure</a>
+        <a href="/about.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">About Us</a>
+        <a href="/contact.html" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Contact</a>
       </div>
     </div>
   </footer>
 
   <script>
+    // Theme Switcher & Auto Mobile Detection
+    function initTheme() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          darkIcon.classList.add('hidden');
+          lightIcon.classList.remove('hidden');
+        } else {
+          lightIcon.classList.add('hidden');
+          darkIcon.classList.remove('hidden');
+        }
+      }
+
+      updateIcons();
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+          updateIcons();
+        });
+      }
+
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+            updateIcons();
+          }
+        });
+      }
+    }
+
     async function loadPostShop() {
       try {
         const res = await fetch('/data/products.json');
@@ -164,12 +230,12 @@
         const selection = items.slice(0, 3);
         const container = document.getElementById('post-shop-products');
         container.innerHTML = selection.map(p => `
-          <div class="bg-white rounded-xl p-4 border border-amber-100 shadow-sm flex flex-col">
-            <img src="${p.image}" alt="${p.title}" class="h-32 w-full object-cover rounded-lg mb-2">
-            <h4 class="font-bold text-xs text-gray-900 line-clamp-1">${p.title}</h4>
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+            <img src="${p.image}" alt="${p.title}" class="h-32 w-full object-cover rounded-xl mb-2">
+            <h4 class="font-bold text-xs text-slate-900 dark:text-white line-clamp-1">${p.title}</h4>
             <div class="flex items-center justify-between mt-auto pt-2">
-              <span class="text-sm font-extrabold text-gray-900">${p.price}</span>
-              <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold rounded-lg transition">
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white">${p.price}</span>
+              <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="px-3 py-1 bg-amber-500 hover:bg-amber-600 text-white text-[11px] font-bold rounded-xl transition">
                 Buy on eBay
               </a>
             </div>
@@ -179,6 +245,8 @@
         console.error('Error loading recommendations:', e);
       }
     }
+
+    initTheme();
     loadPostShop();
   </script>
 

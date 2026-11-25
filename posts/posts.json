@@ -1,10 +1,30 @@
 [
   {
+    "slug": "11-things-cats-do-differently-when-the-weather-turns-cold",
+    "title": "11 Things Cats Do Differently When The Weather Turns Cold",
+    "excerpt": "When temperatures drop, cats change their routines in fascinating ways. Discover how cold weather impacts feline sleep, eating, cuddling, and hydration habits.",
+    "category": "Care",
+    "date": "November 25, 2026",
+    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=940",
+    "reading_time": 5,
+    "featured": true
+  },
+  {
+    "slug": "jaxy-mustache-movember-cat-care-guide",
+    "title": "Cat Named Jaxy Has a Mustache Worth Celebrating This Movember",
+    "excerpt": "Meet Jaxy, the tuxedo cat with a dapper mustache turning heads this Movember, reminding us all of the importance of pet wellness and regular vet checkups.",
+    "category": "Health",
+    "date": "November 25, 2026",
+    "image": "https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&w=940",
+    "reading_time": 4,
+    "featured": false
+  },
+  {
     "slug": "19-year-old-leopard-diet-struggles-golden-years",
     "title": "19-Year-Old Leopard Gets to Enjoy His Golden Years After Diet Struggles",
     "excerpt": "Discover how a dedicated diet transformation helped a 19-year-old leopard cat reclaim his health and enjoy his golden years with vitality and comfort.",
     "category": "Health",
-    "date": "2026-11-25",
+    "date": "November 25, 2026",
     "image": "https://images.pexels.com/photos/12167834/pexels-photo-12167834.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     "reading_time": 5,
     "featured": false
@@ -12,9 +32,9 @@
   {
     "slug": "do-cats-really-smile-feline-expressions-guide",
     "title": "Do Cats Really Smile? A Veterinarian Explains Their Expressions",
-    "excerpt": "While cats cannot physically smile like humans, they communicate joy and contentment through a complex language of facial cues, blinks, and whisker positions that every cat parent should learn to decipher.",
-    "category": "Health",
-    "date": "2026-11-25",
+    "excerpt": "While cats cannot physically smile like humans, they communicate joy and contentment through a complex language of facial cues, blinks, and whisker positions.",
+    "category": "Behavior",
+    "date": "November 25, 2026",
     "image": "https://images.pexels.com/photos/29983805/pexels-photo-29983805.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     "reading_time": 5,
     "featured": false
@@ -22,9 +42,9 @@
   {
     "slug": "man-who-disliked-cats-becomes-bff-with-rescue-kitten",
     "title": "From Desert Survivor to BFF: How a Cat-Hating Man Found His Feline Soulmate",
-    "excerpt": "When a stranded traveler rescued a trembling kitten in the desert, he braced for the worst. Instead, he discovered a bond that would change his perspective on companionship forever.",
-    "category": "Health",
-    "date": "2026-11-25",
+    "excerpt": "When a stranded traveler rescued a trembling kitten in the desert, he braced for the worst. Instead, he discovered a lifelong bond that transformed his worldview.",
+    "category": "Lifestyle",
+    "date": "November 25, 2026",
     "image": "https://images.pexels.com/photos/33394285/pexels-photo-33394285.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     "reading_time": 5,
     "featured": false
@@ -32,31 +52,11 @@
   {
     "slug": "understanding-feline-hydration-why-cats-need-running-water",
     "title": "Understanding Feline Hydration: Why Cats Prefer Running Water and How to Protect Their Kidneys",
-    "excerpt": "Many domestic cats suffer from chronic dehydration without their owners realizing it. Discover why running water activates your cat's natural instincts and simple steps to keep them hydrated.",
-    "category": "Cat Care",
-    "date": "2026-11-25",
-    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "excerpt": "Many domestic cats suffer from chronic dehydration without their owners realizing it. Discover why running water activates your cat's natural instincts.",
+    "category": "Health",
+    "date": "November 25, 2026",
+    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "reading_time": 4,
-    "featured": true
-  },
-  {
-    "slug": "why-indoor-cats-scratch-furniture-solution",
-    "title": "Why Cats Scratch Furniture (And How to Gently Redirect Them Without Punishment)",
-    "excerpt": "Scratching is an essential physiological need for cats, not bad behavior. Here is how to understand feline territory marking and guide them to sisal scratchers effortlessly.",
-    "category": "Behavior",
-    "date": "2026-11-24",
-    "image": "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "reading_time": 5,
-    "featured": false
-  },
-  {
-    "slug": "signs-your-cat-loves-and-trusts-you",
-    "title": "7 Subtle Signs Your Cat Genuinely Trusts and Loves You",
-    "excerpt": "From the gentle slow blink to showing their vulnerable belly, learn the feline body language that proves you are your cat's favorite human.",
-    "category": "Cat Life",
-    "date": "2026-11-23",
-    "image": "https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "reading_time": 3,
     "featured": false
   }
 ]

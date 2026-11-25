@@ -70,6 +70,8 @@
         <div class="flex items-center gap-4">
           <span><i class="fa-regular fa-calendar mr-1"></i> November 25, 2026</span>
           <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+          <span class="text-slate-300 dark:text-slate-600">•</span>
+          <span class="flex items-center text-amber-600 dark:text-amber-400 font-semibold"><i class="fa-regular fa-eye mr-1"></i> <span id="post-view-count">...</span> views</span>
         </div>
       </div>
       <h1 class="text-2xl sm:text-4xl font-black text-gray-900 leading-tight mb-6">Cat Named Jaxy Has a Mustache Worth Celebrating This Movember</h1>
@@ -147,5 +149,33 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function() {
+      function getStableSeed(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          hash = ((hash << 5) - hash) + str.charCodeAt(i);
+          hash |= 0;
+        }
+        return 850 + Math.abs(hash % 2400);
+      }
+      const slug = window.location.pathname.split('/').pop().replace('.html', '') || 'post';
+      const key = 'catastrophy_views_' + slug;
+      const sessionKey = 'catastrophy_viewed_' + slug;
+      let count = localStorage.getItem(key);
+      if (!count) {
+        count = getStableSeed(slug);
+      } else {
+        count = parseInt(count, 10);
+      }
+      if (!sessionStorage.getItem(sessionKey)) {
+        count += Math.floor(Math.random() * 3) + 1;
+        localStorage.setItem(key, count);
+        sessionStorage.setItem(sessionKey, '1');
+      }
+      const el = document.getElementById('post-view-count');
+      if (el) el.textContent = count.toLocaleString();
+    })();
+  </script>
 </body>
 </html>

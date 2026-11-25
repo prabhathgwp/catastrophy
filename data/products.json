@@ -1,0 +1,68 @@
+[
+  {
+    "id": "prod-1",
+    "title": "Interactive Laser & Feather Electric Cat Toy",
+    "category": "Toys",
+    "price": "$18.99",
+    "rating": "4.9",
+    "image": "https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "360-degree rotating interactive laser toy with automated timer to keep indoor cats exercised and entertained.",
+    "ebay_url": "https://www.ebay.com/itm/example-cat-toy-1",
+    "badge": "Best Seller"
+  },
+  {
+    "id": "prod-2",
+    "title": "Multi-Level Sisal Cat Scratching Tree & Hammock",
+    "category": "Scratchers",
+    "price": "$49.50",
+    "rating": "4.8",
+    "image": "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "Heavy-duty sisal rope scratching posts with plush resting platform and dangling pom-poms for endless scratching fun.",
+    "ebay_url": "https://www.ebay.com/itm/example-cat-scratching-post-2",
+    "badge": "Top Rated"
+  },
+  {
+    "id": "prod-3",
+    "title": "Ultra-Soft Orthopedic Faux Fur Donut Cat Bed",
+    "category": "Beds",
+    "price": "$24.95",
+    "rating": "5.0",
+    "image": "https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "Self-warming calming donut pet bed with elevated rim providing neck support and deep anxiety-relieving sleep.",
+    "ebay_url": "https://www.ebay.com/itm/example-calming-cat-bed-3",
+    "badge": "Staff Pick"
+  },
+  {
+    "id": "prod-4",
+    "title": "Automatic Ultra-Quiet Pet Water Fountain with Filter",
+    "category": "Feeders",
+    "price": "$29.99",
+    "rating": "4.7",
+    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "2.5L circulating fountain with multi-stage carbon filtration to encourage proper kidney health and hydration.",
+    "ebay_url": "https://www.ebay.com/itm/example-cat-water-fountain-4",
+    "badge": "Health Essential"
+  },
+  {
+    "id": "prod-5",
+    "title": "Undercoat Deshedding Brush & Self-Cleaning Slicker",
+    "category": "Grooming",
+    "price": "$14.50",
+    "rating": "4.9",
+    "image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "Gentle stainless steel grooming comb that removes loose fur and prevents hairballs without scratching sensitive skin.",
+    "ebay_url": "https://www.ebay.com/itm/example-cat-grooming-brush-5",
+    "badge": "Grooming Favorite"
+  },
+  {
+    "id": "prod-6",
+    "title": "Cozy Window Perch Hammock with Heavy-Duty Suction Cups",
+    "category": "Beds",
+    "price": "$22.00",
+    "rating": "4.8",
+    "image": "https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "description": "Sturdy sunbathing window hammock that holds up to 35 lbs, perfect for bird-watching and cat naps.",
+    "ebay_url": "https://www.ebay.com/itm/example-cat-window-perch-6",
+    "badge": "Popular"
+  }
+]

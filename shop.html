@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curated Cat Shop - Catastrophy</title>
+  <meta name="description" content="Shop hand-picked feline gear, interactive toys, orthopedic beds, and sisal scratching trees via our official eBay store.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google AdSense Placeholder (Uncomment when approved) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 text-2xl font-black text-amber-600 tracking-tight">
+        <i class="fa-solid fa-cat text-3xl"></i>
+        <span>Catastrophy</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="/index.html" class="hover:text-amber-600 transition">Home</a>
+        <a href="/shop.html" class="text-amber-600 font-bold">Cat Shop</a>
+        <a href="/about.html" class="hover:text-amber-600 transition">About</a>
+        <a href="/contact.html" class="hover:text-amber-600 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Shop Hero Banner -->
+  <section class="bg-gradient-to-r from-amber-600 to-amber-700 text-white py-12 px-4">
+    <div class="max-w-5xl mx-auto text-center space-y-3">
+      <span class="inline-block px-3 py-1 bg-amber-500/50 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+        <i class="fa-solid fa-paw mr-1"></i> Feline Approved
+      </span>
+      <h1 class="text-3xl md:text-5xl font-black tracking-tight">The Catastrophy Feline Shop</h1>
+      <p class="text-amber-100 max-w-2xl mx-auto text-sm md:text-base">
+        Explore premium cat toys, orthopedic beds, scratching posts, and wellness gear curated by our editors and verified on eBay.
+      </p>
+    </div>
+  </section>
+
+  <!-- AdSense Top Banner Slot -->
+  <div class="max-w-5xl mx-auto px-4 my-6">
+    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl py-6 px-4 text-center text-xs text-gray-400 font-medium">
+      <i class="fa-solid fa-rectangle-ad mr-1"></i> Advertisement Area (Google AdSense Responsive Unit)
+    </div>
+  </div>
+
+  <!-- Main Shop Section -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+    
+    <!-- Filter Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-gray-200">
+      <div class="flex flex-wrap gap-2" id="filter-buttons">
+        <button class="filter-btn active px-4 py-2 rounded-full text-xs font-bold bg-amber-600 text-white transition shadow-sm" data-category="All">All Items</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition" data-category="Toys">Toys</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition" data-category="Scratchers">Scratchers & Trees</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition" data-category="Beds">Beds & Hammocks</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition" data-category="Feeders">Fountains & Feeders</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition" data-category="Grooming">Grooming & Health</button>
+      </div>
+      <p class="text-xs text-gray-500 italic">Dispatched & fulfilled safely through eBay buyer protection.</p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="products-grid">
+      <!-- Populated via JavaScript from data/products.json -->
+    </div>
+
+  </main>
+
+  <!-- Affiliate Notice Strip -->
+  <section class="bg-gray-100 border-t border-gray-200 py-4 px-4 text-center text-xs text-gray-500">
+    <div class="max-w-4xl mx-auto">
+      <strong>Disclosure:</strong> As an eBay Partner Network participant, we may earn commissions from qualifying purchases made via product links. Prices and availability are subject to change on eBay.
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10 mt-auto border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="text-white font-bold text-lg flex items-center justify-center sm:justify-start gap-2">
+          <i class="fa-solid fa-cat text-amber-500"></i> Catastrophy
+        </p>
+        <p class="text-xs text-gray-500 mt-1">© 2026 Catastrophy (protechsystems.lk). All rights reserved.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 text-xs">
+        <a href="/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+        <a href="/terms.html" class="hover:text-white transition">Terms of Service</a>
+        <a href="/disclaimer.html" class="hover:text-white transition">Affiliate Disclosure</a>
+        <a href="/about.html" class="hover:text-white transition">About Us</a>
+        <a href="/contact.html" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script to load products dynamically -->
+  <script>
+    let allProducts = [];
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('/data/products.json');
+        allProducts = await res.json();
+        renderProducts(allProducts);
+      } catch (e) {
+        console.error('Error loading products:', e);
+      }
+    }
+
+    function renderProducts(items) {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = items.map(p => `
+        <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition duration-200 flex flex-col group">
+          <div class="relative h-56 overflow-hidden bg-gray-100">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            ${p.badge ? `<span class="absolute top-3 left-3 bg-amber-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">${p.badge}</span>` : ''}
+            <span class="absolute bottom-3 right-3 bg-gray-900/80 backdrop-blur text-white text-xs px-2.5 py-1 rounded-md font-semibold"><i class="fa-solid fa-star text-amber-400 mr-1"></i>${p.rating}</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">${p.category}</span>
+            <h3 class="font-bold text-gray-900 text-base leading-snug mb-2 group-hover:text-amber-600 transition">${p.title}</h3>
+            <p class="text-xs text-gray-500 mb-4 line-clamp-2 leading-relaxed flex-grow">${p.description}</p>
+            <div class="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
+              <div>
+                <span class="text-xs text-gray-400 block">Est. Price</span>
+                <span class="text-lg font-black text-gray-900">${p.price}</span>
+              </div>
+              <a href="${p.ebay_url}" target="_blank" rel="noopener sponsored" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                <i class="fa-solid fa-cart-shopping"></i> Buy on eBay
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter Buttons logic
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-amber-600', 'text-white', 'shadow-sm', 'font-bold');
+          b.classList.add('bg-white', 'text-gray-700', 'font-medium');
+        });
+        btn.classList.add('bg-amber-600', 'text-white', 'shadow-sm', 'font-bold');
+        btn.classList.remove('bg-white', 'text-gray-700', 'font-medium');
+
+        const cat = btn.getAttribute('data-category');
+        if (cat === 'All') {
+          renderProducts(allProducts);
+        } else {
+          renderProducts(allProducts.filter(p => p.category.toLowerCase().includes(cat.toLowerCase())));
+        }
+      });
+    });
+
+    loadProducts();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "understanding-feline-hydration-why-cats-need-running-water",
+    "title": "Understanding Feline Hydration: Why Cats Prefer Running Water and How to Protect Their Kidneys",
+    "excerpt": "Many domestic cats suffer from chronic dehydration without their owners realizing it. Discover why running water activates your cat's natural instincts and simple steps to keep them hydrated.",
+    "category": "Cat Care",
+    "date": "2026-11-25",
+    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "reading_time": 4,
+    "featured": true
+  },
+  {
+    "slug": "why-indoor-cats-scratch-furniture-solution",
+    "title": "Why Cats Scratch Furniture (And How to Gently Redirect Them Without Punishment)",
+    "excerpt": "Scratching is an essential physiological need for cats, not bad behavior. Here is how to understand feline territory marking and guide them to sisal scratchers effortlessly.",
+    "category": "Behavior",
+    "date": "2026-11-24",
+    "image": "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "reading_time": 5,
+    "featured": false
+  },
+  {
+    "slug": "signs-your-cat-loves-and-trusts-you",
+    "title": "7 Subtle Signs Your Cat Genuinely Trusts and Loves You",
+    "excerpt": "From the gentle slow blink to showing their vulnerable belly, learn the feline body language that proves you are your cat's favorite human.",
+    "category": "Cat Life",
+    "date": "2026-11-23",
+    "image": "https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "reading_time": 3,
+    "featured": false
+  }
+]

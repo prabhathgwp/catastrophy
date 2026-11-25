@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catastrophy - Modern Feline Care, Stories & Cat Gear</title>
@@ -405,31 +406,20 @@
     }
 
     // Load Articles and Populate Hero, Trending, and Main Grid
-    // Real-Time Privacy-Friendly Viewer Counter Helpers
-    function getStableSeed(slug) {
-      let hash = 0;
-      for (let i = 0; i < slug.length; i++) {
-        hash = ((hash << 5) - hash) + slug.charCodeAt(i);
-        hash |= 0;
+    // Real-Time Genuine View Counter via CounterAPI (Zero fake views)
+    async function fetchRealViews(slug) {
+      try {
+        const res = await fetch('https://counterapi.com/api/catastrophy.protechsystems.lk/view/' + encodeURIComponent(slug) + '?readOnly=true');
+        const data = await res.json();
+        return (data && typeof data.value === 'number') ? data.value : 0;
+      } catch (e) {
+        return 0;
       }
-      return 850 + Math.abs(hash % 2400);
     }
 
-    function getPostViews(slug) {
-      const key = 'catastrophy_views_' + slug;
-      let views = localStorage.getItem(key);
-      if (!views) {
-        views = getStableSeed(slug);
-        localStorage.setItem(key, views);
-      }
-      return parseInt(views, 10);
-    }
-
-    function formatViews(n) {
-      if (n >= 1000) {
-        return (n / 1000).toFixed(1) + 'k';
-      }
-      return n.toLocaleString();
+    function formatRealViews(val) {
+      if (val >= 1000) return (val / 1000).toFixed(1) + 'k';
+      return val.toLocaleString();
     }
 
     async function loadContent() {
@@ -449,7 +439,11 @@
         document.getElementById('hero-time').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> ${featured.reading_time || 4} min read`;
         document.getElementById('hero-date').textContent = featured.date || 'Today';
         const heroViewsEl = document.getElementById('hero-views-count');
-        if (heroViewsEl) heroViewsEl.textContent = formatViews(getPostViews(featured.slug));
+        if (heroViewsEl) {
+          fetchRealViews(featured.slug).then(cnt => {
+            heroViewsEl.textContent = formatRealViews(cnt);
+          });
+        }
 
         // 2. Populate Trending Today Widget (items 1 to 4)
         const trendingList = document.getElementById('trending-list');
@@ -462,7 +456,7 @@
               </span>
               <img src="${p.image}" alt="${p.title}" class="w-14 h-14 object-cover rounded-xl shrink-0 group-hover:scale-105 transition">
               <div class="flex-grow min-w-0">
-                <div class="flex items-center justify-between mb-0.5"><span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider block">${p.category || 'Cat Care'}</span><span class="text-[10px] font-semibold text-slate-400 flex items-center gap-1"><i class="fa-regular fa-eye text-amber-500"></i> ${formatViews(getPostViews(p.slug))}</span></div>
+                <div class="flex items-center justify-between mb-0.5"><span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider block">${p.category || 'Cat Care'}</span><span class="text-[10px] font-semibold text-slate-400 flex items-center gap-1"><i class="fa-regular fa-eye text-amber-500"></i> <span class="trend-view-cnt" data-slug="${p.slug}">0</span></span></div>
                 <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition line-clamp-2 leading-snug">
                   ${p.title}
                 </h4>
@@ -487,7 +481,7 @@
                 <div class="flex items-center gap-2">
                   <span><i class="fa-regular fa-clock mr-1"></i> ${p.reading_time || 4} min read</span>
                   <span>•</span>
-                  <span class="text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-1"><i class="fa-regular fa-eye"></i> ${formatViews(getPostViews(p.slug))}</span>
+                  <span class="text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-1"><i class="fa-regular fa-eye"></i> <span class="grid-view-cnt" data-slug="${p.slug}">0</span> views</span>
                 </div>
               </div>
               <h3 class="font-black text-slate-900 dark:text-white text-base sm:text-lg leading-snug group-hover:text-amber-600 dark:group-hover:text-amber-400 transition line-clamp-2">
@@ -506,6 +500,29 @@
         `).join('');
 
         document.getElementById('post-count-badge').textContent = `${posts.length} Guides Available`;
+
+        // Asynchronously populate genuine live view counts for all displayed posts
+        document.querySelectorAll('.grid-view-cnt').forEach(el => {
+          const s = el.getAttribute('data-slug');
+          if (s) {
+            fetchRealViews(s).then(cnt => {
+              el.textContent = formatRealViews(cnt);
+              const parentText = el.nextSibling;
+              if (parentText && parentText.nodeType === 3) {
+                parentText.textContent = cnt === 1 ? ' view' : ' views';
+              }
+            });
+          }
+        });
+
+        document.querySelectorAll('.trend-view-cnt').forEach(el => {
+          const s = el.getAttribute('data-slug');
+          if (s) {
+            fetchRealViews(s).then(cnt => {
+              el.textContent = formatRealViews(cnt);
+            });
+          }
+        });
 
       } catch (e) {
         console.error('Error loading articles:', e);

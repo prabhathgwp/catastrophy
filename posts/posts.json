@@ -1,5 +1,15 @@
 [
   {
+    "slug": "9-reasons-your-cat-wants-to-investigate-thanksgiving-dinner-m29z",
+    "title": "9 Reasons Your Cat Wants To Investigate Thanksgiving Dinner",
+    "excerpt": "Curious why your cat circles the kitchen counter during the holidays? Explore the sensory cues that draw felines to holiday feasts and how to keep them safe.",
+    "category": "Behavior",
+    "date": "November 26, 2026",
+    "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=940",
+    "reading_time": 4,
+    "featured": true
+  },
+  {
     "slug": "stray-cat-struggling-to-walk-meets-stranger-who-wont-give-up-8bx4",
     "title": "Stray Cat Struggling to Walk Meets a Stranger Who Won\u2019t Give Up: A Guide to Feline Neurological Health and Rescue",
     "excerpt": "When an injured stray cat was discovered unable to walk, a compassionate rescuer stepped in to provide urgent care and rehabilitation. Learn about feline mobility issues and care.",
@@ -7,7 +17,7 @@
     "date": "November 26, 2026",
     "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=940",
     "reading_time": 5,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "11-things-cats-do-differently-when-the-weather-turns-cold",
@@ -17,7 +27,7 @@
     "date": "November 25, 2026",
     "image": "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=940",
     "reading_time": 5,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "jaxy-mustache-movember-cat-care-guide",
